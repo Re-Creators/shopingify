@@ -4,6 +4,7 @@
 
 @layer components {
   .App {
-    @apply flex;
+    @apply flex h-screen w-full;
+    background-color: rgba(250, 250, 254, 1);
   }
 }

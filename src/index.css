@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: "Quicksand", sans-serif;
+}
+
 @layer components {
   .App {
     @apply flex h-screen w-full;

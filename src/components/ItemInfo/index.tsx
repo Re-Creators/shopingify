@@ -1,9 +1,19 @@
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
+import { useAppDispatch } from "../../app/hooks";
+import { changeState } from "../../features/actionBarState/actionBarStateSlice";
+import { ActionState } from "../../types/enum";
 
 function ItemInfo() {
+  const dispatch = useAppDispatch();
+
   return (
     <div className="pt-8 px-5 bg-white shadow-md h-full overflow-y-auto">
-      <button className="flex text-yellow-500 items-center text-lg">
+      <button
+        className="flex text-yellow-500 items-center text-lg"
+        onClick={() => {
+          dispatch(changeState(ActionState.SHOPPING_LIST));
+        }}
+      >
         <HiOutlineArrowNarrowLeft /> <span className="ml-2">back</span>
       </button>
       <div className="mt-5">

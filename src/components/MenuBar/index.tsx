@@ -6,6 +6,7 @@ import {
 } from "react-icons/ai";
 import { GoGraph } from "react-icons/go";
 import TippyInfo from "../TippyInfo";
+import { Link } from "react-router-dom";
 
 function MenuBar() {
   return (
@@ -17,23 +18,23 @@ function MenuBar() {
         <ul className="flex flex-col">
           <li className="">
             <TippyInfo content="Items">
-              <a href="/">
+              <Link to="/">
                 <AiOutlineOrderedList fontSize={24} />
-              </a>
+              </Link>
             </TippyInfo>
           </li>
           <li className="mt-14">
             <TippyInfo content="History">
-              <a href="/">
+              <Link to="/history">
                 <AiOutlineHistory fontSize={24} />
-              </a>
+              </Link>
             </TippyInfo>
           </li>
           <li className="mt-14">
             <TippyInfo content="Statistics">
-              <a href="/">
+              <Link to="/">
                 <GoGraph fontSize={24} />
-              </a>
+              </Link>
             </TippyInfo>
           </li>
         </ul>

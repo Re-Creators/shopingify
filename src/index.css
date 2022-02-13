@@ -36,36 +36,13 @@ body {
   transition: all 300ms ease;
 }
 
-#arrow,
-#arrow::before {
+.tooltip::before {
   position: absolute;
-  width: 8px;
-  height: 8px;
-  background: inherit;
-}
-
-#arrow {
-  visibility: hidden;
-}
-
-#arrow::before {
-  visibility: visible;
   content: "";
-  transform: rotate(45deg);
-}
-
-#tooltip[data-placement^="top"] > #arrow {
-  bottom: -4px;
-}
-
-#tooltip[data-placement^="bottom"] > #arrow {
-  top: -4px;
-}
-
-#tooltip[data-placement^="left"] > #arrow {
-  right: -4px;
-}
-
-#tooltip[data-placement^="right"] > #arrow {
-  left: -4px;
+  border-width: 5px;
+  border-color: transparent black transparent transparent;
+  border-style: solid;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
 }

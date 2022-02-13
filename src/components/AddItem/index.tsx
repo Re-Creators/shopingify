@@ -6,7 +6,7 @@ function AddItem() {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="pt-8 px-5 bg-white shadow-md h-full">
+    <div className="pt-8 px-5 bg-white h-full">
       <h1 className="text-2xl font-semibold">Add a new item</h1>
       <div>
         <div className="flex flex-col mt-5">

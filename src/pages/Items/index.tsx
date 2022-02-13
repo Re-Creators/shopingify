@@ -1,5 +1,5 @@
-import React from "react";
-import { AiOutlinePlus, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
+import CategoryItems from "../../components/Items/CategoryItems";
 
 function Items() {
   return (
@@ -21,19 +21,7 @@ function Items() {
         </div>
       </div>
       <div className="mt-14">
-        <div className="mt-5">
-          <h2 className="font-semibold">Fruit and vegetables</h2>
-          <div className="grid grid-cols-4 gap-5 mt-3">
-            <div className="bg-white p-3 rounded-md shadow-md flex items-center">
-              <span className="grow line-clamp-2">
-                Mandarin Nadorcott Piele De
-              </span>
-              <button>
-                <AiOutlinePlus />
-              </button>
-            </div>
-          </div>
-        </div>
+        <CategoryItems />
       </div>
     </div>
   );

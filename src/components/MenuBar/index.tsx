@@ -5,6 +5,7 @@ import {
   AiOutlineHistory,
 } from "react-icons/ai";
 import { GoGraph } from "react-icons/go";
+import TippyInfo from "../TippyInfo";
 
 function MenuBar() {
   return (
@@ -15,19 +16,25 @@ function MenuBar() {
       <div className="">
         <ul className="flex flex-col">
           <li className="">
-            <a href="/">
-              <AiOutlineOrderedList fontSize={24} />
-            </a>
+            <TippyInfo content="Items">
+              <a href="/">
+                <AiOutlineOrderedList fontSize={24} />
+              </a>
+            </TippyInfo>
           </li>
           <li className="mt-14">
-            <a href="/">
-              <AiOutlineHistory fontSize={24} />
-            </a>
+            <TippyInfo content="History">
+              <a href="/">
+                <AiOutlineHistory fontSize={24} />
+              </a>
+            </TippyInfo>
           </li>
           <li className="mt-14">
-            <a href="/">
-              <GoGraph fontSize={24} />
-            </a>
+            <TippyInfo content="Statistics">
+              <a href="/">
+                <GoGraph fontSize={24} />
+              </a>
+            </TippyInfo>
           </li>
         </ul>
       </div>

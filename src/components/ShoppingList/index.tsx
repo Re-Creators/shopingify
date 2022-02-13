@@ -1,8 +1,13 @@
 import source from "../../assets/images/source.svg";
 import { MdModeEdit } from "react-icons/md";
 import ShoppingItems from "../Items/ShoppingItems";
+import { useAppDispatch } from "../../app/hooks";
+import { changeState } from "../../features/actionBarState/actionBarStateSlice";
+import { ActionState } from "../../types/enum";
 
 function ShoppingList() {
+  const dispatch = useAppDispatch();
+
   return (
     <div className="bg-orange-200 pt-10 px-5 h-full">
       <div className="flex bg-pink-900 w-full p-4 rounded-md">
@@ -17,7 +22,12 @@ function ShoppingList() {
           <h1 className="text-xl font-semibold text-white">
             Didn’t find what you need?
           </h1>
-          <button className="px-4 py-2 bg-white text-black rounded-md mt-5">
+          <button
+            className="px-4 py-2 bg-white text-black rounded-md mt-5"
+            onClick={() => {
+              dispatch(changeState(ActionState.ADD_ITEM));
+            }}
+          >
             Add Item
           </button>
         </div>

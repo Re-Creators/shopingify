@@ -3,7 +3,7 @@ import CategoryItems from "../../components/Items/CategoryItems";
 
 function Items() {
   return (
-    <div className="p-10 w-[65%]">
+    <div className="p-10 w-[69%]">
       <div className="flex">
         <div className="w-3/5">
           <h1 className="text-3xl font-semibold">

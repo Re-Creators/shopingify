@@ -4,7 +4,7 @@ import HistoryItems from "../../components/Items/HistoryItems";
 
 function History() {
   return (
-    <div className="p-10 w-[65%]">
+    <div className="p-10 w-[69%]">
       <h1 className="text-2xl font-semibold">Shopping history</h1>
       <div>
         <HistoryItems />

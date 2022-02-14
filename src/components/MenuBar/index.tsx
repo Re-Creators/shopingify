@@ -7,34 +7,35 @@ import {
 import { GoGraph } from "react-icons/go";
 import { Link } from "react-router-dom";
 import Tooltip from "../Tooltip";
+import CustomLink from "../CustomLink";
 
 function MenuBar() {
   return (
-    <div className="min-h-screen bg-white w-[8%] flex flex-col items-center justify-between py-8">
+    <div className="min-h-screen bg-white w-[6%] flex flex-col items-center justify-between py-8">
       <div className="">
         <img src={logo} alt="Logo" />
       </div>
-      <div className="">
+      <div className="w-full">
         <ul className="flex flex-col">
-          <li className="">
+          <li className="w-full">
             <Tooltip content="Items">
-              <Link to="/" className="">
+              <CustomLink to="/" className="flex justify-center">
                 <AiOutlineOrderedList fontSize={24} />
-              </Link>
+              </CustomLink>
             </Tooltip>
           </li>
           <li className="mt-14">
             <Tooltip content="History">
-              <Link to="/history">
+              <CustomLink to="/history" className="flex justify-center">
                 <AiOutlineHistory fontSize={24} />
-              </Link>
+              </CustomLink>
             </Tooltip>
           </li>
           <li className="mt-14">
             <Tooltip content="Statistics">
-              <Link to="/">
+              <CustomLink to="/" className="flex justify-center">
                 <GoGraph fontSize={24} />
-              </Link>
+              </CustomLink>
             </Tooltip>
           </li>
         </ul>

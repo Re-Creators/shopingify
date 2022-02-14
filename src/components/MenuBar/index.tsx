@@ -33,7 +33,7 @@ function MenuBar() {
           </li>
           <li className="mt-14">
             <Tooltip content="Statistics">
-              <CustomLink to="/" className="flex justify-center">
+              <CustomLink to="/statistic" className="flex justify-center">
                 <GoGraph fontSize={24} />
               </CustomLink>
             </Tooltip>

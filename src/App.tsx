@@ -3,6 +3,7 @@ import ActionBar from "./components/ActionBar";
 import MenuBar from "./components/MenuBar";
 import History from "./pages/History";
 import Items from "./pages/Items";
+import Statistic from "./pages/Statistic";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Items />} />
         <Route path="/history" element={<History />} />
+        <Route path="/statistic" element={<Statistic />} />
       </Routes>
       <ActionBar />
     </div>

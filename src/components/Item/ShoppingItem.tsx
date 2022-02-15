@@ -4,9 +4,7 @@ import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 function ShoppingItem() {
   return (
     <li className="flex items-center relative mt-3">
-      <div className="font-semibold line-clamp-2 w-[250px]">
-        Acocado Lorem, lorem asdlak ladkjadkja kljadklaj
-      </div>
+      <div className="font-semibold line-clamp-2 w-[220px]">Acocado Lorem,</div>
       <div className="absolute right-0 hover:bg-white flex items-center rounded-md group duration-300 ">
         <button className="px-2 py-3 bg-yellow-500 rounded-md mr-3 opacity-0 group-hover:opacity-100 duration-300">
           <IoMdTrash color="white" fontSize={20} />

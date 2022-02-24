@@ -1,7 +1,15 @@
+import { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
+import { useAppDispatch } from "../../app/hooks";
 import CategoryItems from "../../components/Items/CategoryItems";
+import { fetchItems } from "../../features/items/itemsSlice";
 
 function Items() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchItems());
+  }, [dispatch]);
   return (
     <div className="p-10 md:w-[60%] lg:w-[69%]">
       <div className="flex flex-col lg:flex-row">

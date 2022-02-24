@@ -5,45 +5,45 @@ import axiosClient from "../../axiosClient";
 
 export const a = 0;
 
-interface ItemSliceState {
+interface ItemsSliceState {
   items: Item[];
   isLoading: boolean;
 }
 
-function startLoading(state: ItemSliceState) {
+function startLoading(state: ItemsSliceState) {
   state.isLoading = false;
 }
 
-const initialState: ItemSliceState = {
+const initialState: ItemsSliceState = {
   items: [],
   isLoading: false,
 };
 
-export const itemSlice = createSlice({
+export const itemsSlice = createSlice({
   name: "items",
   initialState,
   reducers: {
-    fetchItemStart: startLoading,
-    fetchItemSuccess: (state, { payload }: PayloadAction<Item[]>) => {
+    fetchItemsStart: startLoading,
+    fetchItemsSuccess: (state, { payload }: PayloadAction<Item[]>) => {
       state.items = payload;
       state.isLoading = false;
     },
   },
 });
 
-export const { fetchItemStart, fetchItemSuccess } = itemSlice.actions;
+export const { fetchItemsStart, fetchItemsSuccess } = itemsSlice.actions;
 
 export const fetchItems = (): AppThunk => async (dispatch) => {
-  dispatch(fetchItemStart());
+  dispatch(fetchItemsStart());
 
   try {
     const response = await axiosClient.get("/products");
 
     console.log(response.data);
-    dispatch(fetchItemSuccess(response.data));
+    dispatch(fetchItemsSuccess(response.data));
   } catch (e) {
     console.log(e);
   }
 };
 
-export default itemSlice.reducer;
+export default itemsSlice.reducer;

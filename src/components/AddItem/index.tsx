@@ -4,6 +4,7 @@ import axiosClient from "../../axiosClient";
 import { changeState } from "../../features/actionBarState/actionBarStateSlice";
 import Category from "../../models/Category";
 import { ActionState } from "../../types/enum";
+import Spinner from "../Spinner";
 
 const categories: Category[] = [
   { _id: 1, name: "Category 1" },
@@ -15,14 +16,21 @@ const categories: Category[] = [
 
 function AddItem() {
   const dispatch = useAppDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const [category, setCategory] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const values = Object.fromEntries(formData.entries());
 
-    axiosClient.post("/products", values);
+    try {
+      setIsLoading(true);
+      await axiosClient.post("/products", values);
+      dispatch(changeState(ActionState.SHOPPING_LIST));
+    } catch (err) {
+      console.error(err);
+    }
   };
   return (
     <div className="pt-8 px-5 bg-white h-full">
@@ -97,10 +105,11 @@ function AddItem() {
               Cancel
             </button>
             <button
-              className="text-white px-10 py-3 rounded-md bg-yellow-500"
+              className="text-white w-24 py-3 rounded-md bg-yellow-500"
               type="submit"
+              disabled={isLoading}
             >
-              Save
+              {isLoading ? <Spinner /> : "Save"}
             </button>
           </div>
         </form>

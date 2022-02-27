@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useAppDispatch } from "../../app/hooks";
-import CategoryItems from "../../components/Items/CategoryItems";
-import { fetchItems } from "../../features/items/itemsSlice";
+import CategoryItem from "../../components/Items/CategoryItem";
+import {
+  fetchCategoryItems,
+  fetchCategoryStart,
+} from "../../features/categoryItem/categoryItemSlice";
 
 function Home() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchItems());
+    dispatch(fetchCategoryItems());
   }, [dispatch]);
 
   return (
@@ -30,7 +33,7 @@ function Home() {
         </div>
       </div>
       <div className="mt-14">
-        <CategoryItems />
+        <CategoryItem />
       </div>
     </div>
   );

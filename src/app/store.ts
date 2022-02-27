@@ -1,11 +1,10 @@
 import { AnyAction, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import actionBarStateReducer from "../features/actionBarState/actionBarStateSlice";
-import itemsStateReducer from "../features/items/itemsSlice";
-
+import categoryItemReducer from "../features/categoryItem/categoryItemSlice";
 export const store = configureStore({
   reducer: {
     actionBarState: actionBarStateReducer,
-    items: itemsStateReducer,
+    categoryItem: categoryItemReducer,
   },
 });
 

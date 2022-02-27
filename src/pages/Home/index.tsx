@@ -4,12 +4,13 @@ import { useAppDispatch } from "../../app/hooks";
 import CategoryItems from "../../components/Items/CategoryItems";
 import { fetchItems } from "../../features/items/itemsSlice";
 
-function Items() {
+function Home() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchItems());
   }, [dispatch]);
+
   return (
     <div className="p-10 md:w-[60%] lg:w-[69%]">
       <div className="flex flex-col lg:flex-row">
@@ -35,4 +36,4 @@ function Items() {
   );
 }
 
-export default Items;
+export default Home;

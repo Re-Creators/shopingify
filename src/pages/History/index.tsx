@@ -1,13 +1,11 @@
-import { MdOutlineDateRange } from "react-icons/md";
-import { FaChevronRight } from "react-icons/fa";
-import HistoryItems from "../../components/Items/HistoryItems";
+import HistoryList from "../../components/history/HistoryList";
 
 function History() {
   return (
     <div className="p-10 w-[69%]">
       <h1 className="text-2xl font-semibold">Shopping history</h1>
       <div>
-        <HistoryItems />
+        <HistoryList />
       </div>
     </div>
   );

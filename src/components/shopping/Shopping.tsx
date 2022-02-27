@@ -1,7 +1,8 @@
-import { IoMdTrash } from "react-icons/io";
+import React from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { IoMdTrash } from "react-icons/io";
 
-function ShoppingItem() {
+function Shopping() {
   return (
     <li className="flex items-center relative mt-3">
       <div className="font-semibold line-clamp-2 w-[220px]">Acocado Lorem,</div>
@@ -23,4 +24,4 @@ function ShoppingItem() {
   );
 }
 
-export default ShoppingItem;
+export default Shopping;

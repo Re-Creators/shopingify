@@ -3,7 +3,7 @@ import { useAppDispatch } from "../../app/hooks";
 import { changeState } from "../../features/actionBarState/actionBarStateSlice";
 import { ActionState } from "../../types/enum";
 
-function CategoryItem() {
+function Item() {
   const dispatch = useAppDispatch();
 
   return (
@@ -21,4 +21,4 @@ function CategoryItem() {
   );
 }
 
-export default CategoryItem;
+export default Item;

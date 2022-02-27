@@ -44,7 +44,6 @@ export const fetchCategoryItems = (): AppThunk => async (dispatch) => {
 
   try {
     const { data } = await axiosClient.get("/items");
-    console.log(data);
     dispatch(fetchCategorySuccess(data));
   } catch (e) {
     console.log(e);

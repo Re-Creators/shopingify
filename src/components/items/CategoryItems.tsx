@@ -1,15 +1,15 @@
 import { useAppSelector } from "../../app/hooks";
+import Item from "./Item";
 
-function CategoryItem() {
+function CategoryItems() {
   const categories = useAppSelector((state) => state.categoryItem.categoryItem);
-
   return (
-    <div className="mt-5">
+    <div>
       {categories.map((category) => (
-        <div key={category._id}>
+        <div className="mt-5" key={category._id}>
           <h2 className="font-semibold">{category.name}</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mt-3">
-            <CategoryItem />
+            <Item />
           </div>
         </div>
       ))}
@@ -17,4 +17,4 @@ function CategoryItem() {
   );
 }
 
-export default CategoryItem;
+export default CategoryItems;

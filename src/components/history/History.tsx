@@ -1,8 +1,7 @@
-import React from "react";
 import { FaChevronRight } from "react-icons/fa";
 import { MdOutlineDateRange } from "react-icons/md";
 
-function HistoryItem() {
+function History() {
   return (
     <div className="flex bg-white px-3 py-4 justify-between items-center  shadow-md mt-3 rounded-md">
       <div className="font-semibold">Grocery List</div>
@@ -24,4 +23,4 @@ function HistoryItem() {
   );
 }
 
-export default HistoryItem;
+export default History;

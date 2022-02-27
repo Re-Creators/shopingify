@@ -1,9 +1,9 @@
 import source from "../../assets/images/source.svg";
 import { MdModeEdit } from "react-icons/md";
-import ShoppingItems from "../Items/ShoppingItems";
 import { useAppDispatch } from "../../app/hooks";
 import { changeState } from "../../features/actionBarState/actionBarStateSlice";
 import { ActionState } from "../../types/enum";
+import Shopping from "./Shopping";
 
 function ShoppingList() {
   const dispatch = useAppDispatch();
@@ -40,7 +40,10 @@ function ShoppingList() {
           </button>
         </div>
         <div className="mt-5">
-          <ShoppingItems />
+          <div>
+            <h2>Category One</h2>
+            <Shopping />
+          </div>
         </div>
       </div>
       <div className="absolute bottom-0 inset-x-0 bg-white py-5 px-10 ">

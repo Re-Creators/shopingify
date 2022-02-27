@@ -26,7 +26,7 @@ function AddItem() {
 
     try {
       setIsLoading(true);
-      await axiosClient.post("/products", values);
+      await axiosClient.post("/items", values);
       dispatch(changeState(ActionState.SHOPPING_LIST));
     } catch (err) {
       console.error(err);

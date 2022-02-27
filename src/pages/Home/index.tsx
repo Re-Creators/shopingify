@@ -12,7 +12,7 @@ function Home() {
   }, [dispatch]);
 
   return (
-    <div className="p-10 md:w-[60%] lg:w-[69%]">
+    <div className="p-10 md:w-[60%] lg:w-[69%] hide-scrollbar">
       <div className="flex flex-col lg:flex-row">
         <div className="w-full lg:w-3/5">
           <h1 className="text-3xl font-semibold">

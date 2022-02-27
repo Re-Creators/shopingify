@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAppDispatch } from "../../app/hooks";
 import axiosClient from "../../axiosClient";
 import { changeState } from "../../features/actionBarState/actionBarStateSlice";
+import { fetchCategoryItems } from "../../features/categoryItem/categoryItemSlice";
 import Category from "../../models/Category";
 import { ActionState } from "../../types/enum";
 import Spinner from "../Spinner";
@@ -27,6 +28,8 @@ function AddItem() {
     try {
       setIsLoading(true);
       await axiosClient.post("/items", values);
+
+      dispatch(fetchCategoryItems());
       dispatch(changeState(ActionState.SHOPPING_LIST));
     } catch (err) {
       console.error(err);

@@ -9,7 +9,9 @@ function CategoryItems() {
         <div className="mt-5" key={category._id}>
           <h2 className="font-semibold">{category.name}</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mt-3">
-            <Item />
+            {category.items.map((item) => (
+              <Item key={item._id} name={item.name} />
+            ))}
           </div>
         </div>
       ))}

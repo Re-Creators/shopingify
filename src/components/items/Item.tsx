@@ -3,7 +3,11 @@ import { useAppDispatch } from "../../app/hooks";
 import { changeState } from "../../features/actionBarState/actionBarStateSlice";
 import { ActionState } from "../../types/enum";
 
-function Item() {
+interface Props {
+  name: string;
+}
+
+function Item({ name }: Props) {
   const dispatch = useAppDispatch();
 
   return (
@@ -13,7 +17,7 @@ function Item() {
         dispatch(changeState(ActionState.ITEM_INFO));
       }}
     >
-      <span className="grow line-clamp-2">Mandarin Nadorcott Piele De</span>
+      <span className="grow line-clamp-2">{name}</span>
       <button>
         <AiOutlinePlus />
       </button>

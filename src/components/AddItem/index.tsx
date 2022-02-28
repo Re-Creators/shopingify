@@ -8,11 +8,11 @@ import { ActionState } from "../../types/enum";
 import Spinner from "../Spinner";
 
 const categories: Category[] = [
-  { _id: 1, name: "Category 1" },
-  { _id: 2, name: "Category 2" },
-  { _id: 3, name: "Category 3" },
-  { _id: 4, name: "Category 4" },
-  { _id: 5, name: "Category 5" },
+  { _id: "1", name: "Category 1" },
+  { _id: "2", name: "Category 2" },
+  { _id: "3", name: "Category 3" },
+  { _id: "4", name: "Category 4" },
+  { _id: "5", name: "Category 5" },
 ];
 
 function AddItem() {

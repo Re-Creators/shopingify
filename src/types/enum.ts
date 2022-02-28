@@ -3,3 +3,8 @@ export enum ActionState {
   SHOPPING_LIST,
   ITEM_INFO,
 }
+
+export enum UpdateQtyMode {
+  INCRESE = 1,
+  DECREASE = -1,
+}

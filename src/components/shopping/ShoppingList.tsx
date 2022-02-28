@@ -1,12 +1,13 @@
 import source from "../../assets/images/source.svg";
 import { MdModeEdit } from "react-icons/md";
-import { useAppDispatch } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { changeState } from "../../features/actionBarState/actionBarStateSlice";
 import { ActionState } from "../../types/enum";
 import Shopping from "./Shopping";
 
 function ShoppingList() {
   const dispatch = useAppDispatch();
+  const cart = useAppSelector((state) => state.cart);
 
   return (
     <div className="bg-orange-200 pt-10 px-5 h-full">
@@ -32,17 +33,24 @@ function ShoppingList() {
           </button>
         </div>
       </div>
-      <div className="mt-10">
+      <div className="mt-10 h-full">
         <div className="flex justify-between">
           <h2 className="font-semibold text-xl">Shopping list</h2>
           <button>
             <MdModeEdit fontSize={24} />
           </button>
         </div>
-        <div className="mt-5">
-          <div>
+        <div className="mt-5 hide-scrollbar h-1/2">
+          <div className="">
             <h2>Category One</h2>
-            <Shopping />
+            {cart.cart.map((item) => (
+              <Shopping
+                key={item._id}
+                qty={item.qty}
+                name={item.name}
+                id={item._id}
+              />
+            ))}
           </div>
         </div>
       </div>

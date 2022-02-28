@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useAppDispatch } from "../../app/hooks";
 import { changeState } from "../../features/actionBarState/actionBarStateSlice";
-import { addToCart } from "../../features/cart/cartSlice";
+import { addToCart } from "../../features/shopping/shoppingSlice";
 import Cart from "../../models/Cart";
 import Category from "../../models/Category";
 import { ActionState } from "../../types/enum";

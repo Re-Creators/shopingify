@@ -8,7 +8,7 @@ import { groupedCart } from "../../helper/utils";
 
 function ShoppingList() {
   const dispatch = useAppDispatch();
-  const cart = useAppSelector((state) => state.cart.cart);
+  const cart = useAppSelector((state) => state.shopping.cart);
 
   return (
     <div className="bg-orange-200 pt-10 px-5 h-full">

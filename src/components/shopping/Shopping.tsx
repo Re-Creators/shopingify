@@ -2,7 +2,10 @@ import React from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { IoMdTrash } from "react-icons/io";
 import { useAppDispatch } from "../../app/hooks";
-import { removeFromCart, updateQty } from "../../features/cart/cartSlice";
+import {
+  removeFromCart,
+  updateQty,
+} from "../../features/shopping/shoppingSlice";
 import { UpdateQtyMode } from "../../types/enum";
 
 interface ShoppingProps {

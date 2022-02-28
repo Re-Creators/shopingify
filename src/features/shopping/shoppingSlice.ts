@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import Cart from "../../models/Cart";
-import { UpdateQtyMode } from "../../types/enum";
+import { ShoppingMode, UpdateQtyMode } from "../../types/enum";
 
-interface CartType {
+interface ShoppingType {
   name: string;
+  mode: ShoppingMode;
   cart: Cart[];
 }
 
@@ -12,12 +13,14 @@ interface QtyUpdateType {
   mode: UpdateQtyMode;
 }
 
-const initialState: CartType = {
+const initialState: ShoppingType = {
   name: "",
+  mode: ShoppingMode.EDIT,
   cart: [],
 };
-const cartSlice = createSlice({
-  name: "cart",
+
+const shoppingSlice = createSlice({
+  name: "shopping",
   initialState: initialState,
   reducers: {
     addToCart: (state, { payload }: PayloadAction<Cart>) => {
@@ -40,5 +43,5 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, updateQty, removeFromCart } = cartSlice.actions;
-export default cartSlice.reducer;
+export const { addToCart, updateQty, removeFromCart } = shoppingSlice.actions;
+export default shoppingSlice.reducer;

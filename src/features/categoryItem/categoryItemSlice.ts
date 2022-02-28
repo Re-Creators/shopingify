@@ -2,13 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk } from "../../app/store";
 import Item from "../../models/Item";
 import axiosClient from "../../axiosClient";
-import Items from "../../models/Items";
 import CategoryItem from "../../models/CategoryItem";
 
 export const a = 0;
 
 interface CategoryItemSlice {
   categoryItem: CategoryItem[];
+  selectedItem: Item | null;
   isLoading: boolean;
 }
 
@@ -18,6 +18,7 @@ function startLoading(state: CategoryItemSlice) {
 
 const initialState: CategoryItemSlice = {
   categoryItem: [],
+  selectedItem: null,
   isLoading: false,
 };
 
@@ -33,10 +34,13 @@ export const categoryItemSlice = createSlice({
       state.categoryItem = payload;
       state.isLoading = false;
     },
+    setSelectedItem: (state, { payload }: PayloadAction<Item>) => {
+      state.selectedItem = payload;
+    },
   },
 });
 
-export const { fetchCategoryStart, fetchCategorySuccess } =
+export const { fetchCategoryStart, fetchCategorySuccess, setSelectedItem } =
   categoryItemSlice.actions;
 
 export const fetchCategoryItems = (): AppThunk => async (dispatch) => {

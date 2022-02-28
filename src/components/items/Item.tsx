@@ -23,6 +23,7 @@ function Item({ id, name, category }: Props) {
       _id: id,
       name,
       qty: 1,
+      isCompleted: false,
       category,
     };
 

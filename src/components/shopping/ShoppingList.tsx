@@ -4,10 +4,11 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { changeState } from "../../features/actionBarState/actionBarStateSlice";
 import { ActionState } from "../../types/enum";
 import Shopping from "./Shopping";
+import { groupedCart } from "../../helper/utils";
 
 function ShoppingList() {
   const dispatch = useAppDispatch();
-  const cart = useAppSelector((state) => state.cart);
+  const cart = useAppSelector((state) => state.cart.cart);
 
   return (
     <div className="bg-orange-200 pt-10 px-5 h-full">
@@ -41,17 +42,19 @@ function ShoppingList() {
           </button>
         </div>
         <div className="mt-5 hide-scrollbar h-1/2">
-          <div className="">
-            <h2>Category One</h2>
-            {cart.cart.map((item) => (
-              <Shopping
-                key={item._id}
-                qty={item.qty}
-                name={item.name}
-                id={item._id}
-              />
-            ))}
-          </div>
+          {groupedCart(cart).map((cartList) => (
+            <div className="mt-5" key={cartList.name}>
+              <h2>{cartList.name}</h2>
+              {cartList.value.map((item) => (
+                <Shopping
+                  key={item._id}
+                  qty={item.qty}
+                  name={item.name}
+                  id={item._id}
+                />
+              ))}
+            </div>
+          ))}
         </div>
       </div>
       <div className="absolute bottom-0 inset-x-0 bg-white py-5 px-10 ">

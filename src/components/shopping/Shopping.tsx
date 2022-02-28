@@ -25,7 +25,7 @@ function Shopping({ name, qty, id }: ShoppingProps) {
     dispatch(removeFromCart(id));
   };
   return (
-    <li className="flex items-center relative mt-6">
+    <li className="flex items-center relative mt-4">
       <div className="font-semibold line-clamp-2 w-[220px]">{name}</div>
       <div className="absolute right-0 hover:bg-white flex items-center rounded-md group duration-300 ">
         <button

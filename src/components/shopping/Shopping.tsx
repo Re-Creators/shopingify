@@ -1,9 +1,8 @@
 import React from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { IoMdTrash } from "react-icons/io";
-import { idText } from "typescript";
 import { useAppDispatch } from "../../app/hooks";
-import { updateQty } from "../../features/cart/cartSlice";
+import { removeFromCart, updateQty } from "../../features/cart/cartSlice";
 import { UpdateQtyMode } from "../../types/enum";
 
 interface ShoppingProps {
@@ -21,11 +20,18 @@ function Shopping({ name, qty, id }: ShoppingProps) {
   const decreseHandler = () => {
     dispatch(updateQty({ _id: id, mode: UpdateQtyMode.DECREASE }));
   };
+
+  const removeHandler = () => {
+    dispatch(removeFromCart(id));
+  };
   return (
     <li className="flex items-center relative mt-6">
       <div className="font-semibold line-clamp-2 w-[220px]">{name}</div>
       <div className="absolute right-0 hover:bg-white flex items-center rounded-md group duration-300 ">
-        <button className="px-2 py-3 bg-yellow-500 rounded-md mr-3 opacity-0 group-hover:opacity-100 duration-300">
+        <button
+          className="px-2 py-3 bg-yellow-500 rounded-md mr-3 opacity-0 group-hover:opacity-100 duration-300"
+          onClick={removeHandler}
+        >
           <IoMdTrash color="white" fontSize={20} />
         </button>
         <button

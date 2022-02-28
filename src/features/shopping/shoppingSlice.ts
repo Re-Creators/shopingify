@@ -40,8 +40,28 @@ const shoppingSlice = createSlice({
     removeFromCart: (state, { payload }: PayloadAction<string>) => {
       state.cart = state.cart.filter((item) => item._id !== payload);
     },
+    markComplete: (state, { payload }: PayloadAction<string>) => {
+      const existingCart = state.cart.find((item) => item._id === payload);
+      if (existingCart) {
+        existingCart.isCompleted = !existingCart.isCompleted;
+      }
+    },
+    saveShopping: (state, { payload }: PayloadAction<string>) => {
+      state.name = payload;
+      state.mode = ShoppingMode.SAVED;
+    },
+    changeMode: (state, { payload }: PayloadAction<ShoppingMode>) => {
+      state.mode = payload;
+    },
   },
 });
 
-export const { addToCart, updateQty, removeFromCart } = shoppingSlice.actions;
+export const {
+  addToCart,
+  updateQty,
+  removeFromCart,
+  markComplete,
+  saveShopping,
+  changeMode,
+} = shoppingSlice.actions;
 export default shoppingSlice.reducer;

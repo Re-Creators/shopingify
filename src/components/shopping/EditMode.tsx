@@ -1,7 +1,7 @@
 import { Dispatch } from "@reduxjs/toolkit";
-import { useState } from "react";
-import { MdModeEdit } from "react-icons/md";
+import { useEffect, useState } from "react";
 import { useAppSelector } from "../../app/hooks";
+import { saveShopping } from "../../features/shopping/shoppingSlice";
 import { groupedCart } from "../../helper/utils";
 import Shopping from "./Shopping";
 
@@ -11,18 +11,17 @@ interface Props {
 
 function EditMode({ dispatch }: Props) {
   const cart = useAppSelector((state) => state.shopping.cart);
+  const [name, setName] = useState(
+    useAppSelector((state) => state.shopping.name)
+  );
 
-  const [name, setName] = useState("");
   return (
     <>
       <div className="mt-10 h-full">
         <div className="flex justify-between">
           <h2 className="font-semibold text-xl">Shopping list</h2>
-          <button>
-            <MdModeEdit fontSize={24} />
-          </button>
         </div>
-        <div className="mt-5 hide-scrollbar h-1/2">
+        <div className="hide-scrollbar h-1/2">
           {groupedCart(cart).map((cartList) => (
             <div className="mt-5" key={cartList.name}>
               <h2>{cartList.name}</h2>
@@ -47,6 +46,7 @@ function EditMode({ dispatch }: Props) {
             }  border-2 outline-none rounded-md pl-3 pr-20`}
             placeholder="Enter a name"
             onChange={(e) => setName(e.target.value)}
+            value={name}
           />
           <button
             className={`absolute h-full ${
@@ -54,6 +54,7 @@ function EditMode({ dispatch }: Props) {
             } right-0 top-0 px-5 rounded-md text-white`}
             type="submit"
             disabled={name === ""}
+            onClick={() => dispatch(saveShopping(name))}
           >
             Save
           </button>

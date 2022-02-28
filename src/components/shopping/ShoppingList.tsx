@@ -1,11 +1,12 @@
 import source from "../../assets/images/source.svg";
-import { useAppDispatch } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { changeState } from "../../features/actionBarState/actionBarStateSlice";
-import { ActionState } from "../../types/enum";
+import { ActionState, ShoppingMode } from "../../types/enum";
 import EditMode from "./EditMode";
 import SavedMode from "./SavedMode";
 
 function ShoppingList() {
+  const mode = useAppSelector((state) => state.shopping.mode);
   const dispatch = useAppDispatch();
 
   return (
@@ -32,8 +33,11 @@ function ShoppingList() {
           </button>
         </div>
       </div>
-      {/* <EditMode dispatch={dispatch} /> */}
-      <SavedMode />
+      {mode === ShoppingMode.EDIT ? (
+        <EditMode dispatch={dispatch} />
+      ) : (
+        <SavedMode dispatch={dispatch} />
+      )}
     </div>
   );
 }

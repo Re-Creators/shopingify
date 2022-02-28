@@ -1,17 +1,29 @@
-import React from "react";
 import { MdCheckBox, MdCheckBoxOutlineBlank, MdModeEdit } from "react-icons/md";
-import { GrCheckbox } from "react-icons/gr";
 import { useAppSelector } from "../../app/hooks";
 import { groupedCart } from "../../helper/utils";
+import { Dispatch } from "@reduxjs/toolkit";
+import {
+  changeMode,
+  markComplete,
+} from "../../features/shopping/shoppingSlice";
+import { ShoppingMode } from "../../types/enum";
 
-function SavedMode() {
+interface Props {
+  dispatch: Dispatch;
+}
+
+function SavedMode({ dispatch }: Props) {
   const cart = useAppSelector((state) => state.shopping.cart);
+
+  const markHandler = (id: string) => {
+    dispatch(markComplete(id));
+  };
   return (
     <>
       <div className="mt-10 h-full">
         <div className="flex justify-between">
           <h2 className="font-semibold text-xl">Shopping list</h2>
-          <button>
+          <button onClick={() => dispatch(changeMode(ShoppingMode.EDIT))}>
             <MdModeEdit fontSize={24} />
           </button>
         </div>
@@ -25,14 +37,23 @@ function SavedMode() {
                     className="flex items-center justify-between mb-3"
                     key={item._id}
                   >
-                    <button className="text-yellow-500 text-3xl">
+                    <button
+                      className="text-yellow-500 text-3xl"
+                      onClick={() => markHandler(item._id)}
+                    >
                       {item.isCompleted ? (
                         <MdCheckBox />
                       ) : (
                         <MdCheckBoxOutlineBlank />
                       )}
                     </button>
-                    <div className="w-[220px] line-clamp-2">{item.name}</div>
+                    <div
+                      className={`w-[220px] line-clamp-2 ${
+                        item.isCompleted ? "line-through" : ""
+                      } `}
+                    >
+                      {item.name}
+                    </div>
                     <div className="border-yellow-500 rounded-full border-2 px-3 py-1 text-yellow-500">
                       {item.qty} pcs
                     </div>

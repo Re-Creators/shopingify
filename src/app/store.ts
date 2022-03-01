@@ -1,14 +1,32 @@
 import { AnyAction, configureStore, ThunkAction } from "@reduxjs/toolkit";
-import actionBarStateReducer from "../features/actionBarState/actionBarStateSlice";
-import categoryItemReducer from "../features/categoryItem/categoryItemSlice";
-import shoppingReducer from "../features/shopping/shoppingSlice";
+import reducers from "./reducers";
+import storage from "redux-persist/lib/storage";
+import {
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  persistReducer,
+} from "redux-persist";
+
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["shopping"],
+};
+
+const persistedReducer = persistReducer(persistConfig, reducers);
 
 export const store = configureStore({
-  reducer: {
-    actionBarState: actionBarStateReducer,
-    categoryItem: categoryItemReducer,
-    shopping: shoppingReducer,
-  },
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

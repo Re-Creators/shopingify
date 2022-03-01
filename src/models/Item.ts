@@ -3,5 +3,8 @@ export default interface Item {
   name: string;
   note?: string;
   image?: string;
-  category: string;
+  category: {
+    _id: string;
+    name: string;
+  };
 }

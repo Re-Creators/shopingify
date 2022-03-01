@@ -34,7 +34,10 @@ function CategoryItem({ item, category }: Props) {
   const selectHandler = () => {
     const selectedItem = {
       ...item,
-      category: category.name,
+      category: {
+        _id: category._id,
+        name: category.name,
+      },
     };
     dispatch(setSelectedItem(selectedItem));
     dispatch(changeState(ActionState.ITEM_INFO));

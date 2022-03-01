@@ -4,8 +4,6 @@ import Item from "../../models/Item";
 import axiosClient from "../../axiosClient";
 import CategoryItem from "../../models/CategoryItem";
 
-export const a = 0;
-
 interface CategoryItemSlice {
   categoryItem: CategoryItem[];
   selectedItem: Item | null;

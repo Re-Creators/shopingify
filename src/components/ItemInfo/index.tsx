@@ -1,6 +1,10 @@
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import axiosClient from "../../axiosClient";
 import { changeState } from "../../features/actionBarState/actionBarStateSlice";
+import { fetchCategoryItems } from "../../features/categoryItem/categoryItemSlice";
+import { addToCart } from "../../features/shopping/shoppingSlice";
+import Cart from "../../models/Cart";
 import { ActionState } from "../../types/enum";
 
 function ItemInfo() {
@@ -9,6 +13,26 @@ function ItemInfo() {
     (state) => state.categoryItem.selectedItem
   );
 
+  const addToList = () => {
+    if (selectedItem) {
+      const newItem: Cart = {
+        _id: selectedItem._id,
+        name: selectedItem.name,
+        qty: 1,
+        isCompleted: false,
+        category: selectedItem.category,
+      };
+
+      dispatch(addToCart(newItem));
+      dispatch(changeState(ActionState.SHOPPING_LIST));
+    }
+  };
+  const deleteItem = async () => {
+    await axiosClient.delete(`/items/${selectedItem?._id}`);
+
+    dispatch(fetchCategoryItems());
+    dispatch(changeState(ActionState.SHOPPING_LIST));
+  };
   return (
     <div className="pt-8 px-5 bg-white shadow-md h-full overflow-y-auto">
       <button
@@ -36,7 +60,7 @@ function ItemInfo() {
         </div>
         <div className="mt-5">
           <h2 className="text-gray-400">category</h2>
-          <p className="text-lg font-semibold">{selectedItem?.category}</p>
+          <p className="text-lg font-semibold">{selectedItem?.category.name}</p>
         </div>
         {selectedItem?.note && (
           <div className="mt-5">
@@ -46,8 +70,13 @@ function ItemInfo() {
         )}
 
         <div className="flex mt-10 mb-10  items-center justify-center">
-          <button className="mr-5">delete</button>
-          <button className="text-white px-10 py-3 rounded-md bg-yellow-500">
+          <button className="mr-5" onClick={deleteItem}>
+            delete
+          </button>
+          <button
+            className="text-white px-10 py-3 rounded-md bg-yellow-500"
+            onClick={addToList}
+          >
             Add to list
           </button>
         </div>

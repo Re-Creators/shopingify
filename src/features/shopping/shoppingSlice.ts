@@ -53,6 +53,11 @@ const shoppingSlice = createSlice({
     changeMode: (state, { payload }: PayloadAction<ShoppingMode>) => {
       state.mode = payload;
     },
+    resetShopping: (state) => {
+      state.name = "";
+      state.cart = [];
+      state.mode = ShoppingMode.EDIT;
+    },
   },
 });
 
@@ -63,5 +68,6 @@ export const {
   markComplete,
   saveShopping,
   changeMode,
+  resetShopping,
 } = shoppingSlice.actions;
 export default shoppingSlice.reducer;

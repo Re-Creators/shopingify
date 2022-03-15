@@ -13,3 +13,8 @@ export enum ShoppingMode {
   EDIT,
   SAVED,
 }
+
+export enum ShoppingStatus {
+  COMPLETED = 0,
+  CANCELED = 1,
+}

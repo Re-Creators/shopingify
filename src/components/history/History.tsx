@@ -32,7 +32,7 @@ function History({ name, createdAt, status, id }: Props) {
             status
           )}`}
         >
-          {status === 0 ? "Completed" : "canceled"}
+          {status === 0 ? "completed" : "canceled"}
         </div>
         <div className="">
           <Link to={`/history/${id}`} className="text-yellow-500 text-xl">

@@ -11,6 +11,11 @@ interface Props {
   status: number;
 }
 
+const statusColor = (status: number) =>
+  status === 0
+    ? "text-blue-500 border-blue-500"
+    : "text-red-500 border-red-500";
+
 function History({ name, createdAt, status, id }: Props) {
   return (
     <div className="flex bg-white px-3 py-4 justify-between items-center  shadow-md mt-3 rounded-md">
@@ -22,7 +27,11 @@ function History({ name, createdAt, status, id }: Props) {
             {moment(createdAt).format("llll")}
           </span>
         </div>
-        <div className="py-1 px-3 border-2 border-blue-300 text-blue-300 rounded-full text-center text-sm">
+        <div
+          className={`py-1 px-3 border-2  rounded-full text-center text-sm ${statusColor(
+            status
+          )}`}
+        >
           {status === 0 ? "Completed" : "canceled"}
         </div>
         <div className="">

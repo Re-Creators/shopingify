@@ -21,7 +21,7 @@ function HistoryDetail() {
     fetchData();
   }, []);
 
-  if (data === null) return <Spinner />;
+  if (data === null) return <Spinner classSize="w-10 h-10" />;
   return (
     <div className="p-10 hide-scrollbar">
       <div className="flex flex-col">

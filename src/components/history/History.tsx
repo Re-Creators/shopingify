@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import { MdOutlineDateRange } from "react-icons/md";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 interface Props {
+  id: string;
   name: string;
   createdAt: string;
   status: number;
 }
 
-function History({ name, createdAt, status }: Props) {
+function History({ name, createdAt, status, id }: Props) {
   return (
     <div className="flex bg-white px-3 py-4 justify-between items-center  shadow-md mt-3 rounded-md">
       <div className="font-semibold">{name}</div>
@@ -24,9 +26,9 @@ function History({ name, createdAt, status }: Props) {
           {status === 0 ? "Completed" : "canceled"}
         </div>
         <div className="">
-          <button className="text-yellow-500 text-xl">
+          <Link to={`/history/${id}`} className="text-yellow-500 text-xl">
             <FaChevronRight />
-          </button>
+          </Link>
         </div>
       </div>
     </div>

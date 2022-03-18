@@ -21,6 +21,7 @@ function HistoryList() {
       <div>
         {histories?.map((history) => (
           <History
+            id={history._id}
             name={history.name}
             key={history._id}
             createdAt={history.createdAt}

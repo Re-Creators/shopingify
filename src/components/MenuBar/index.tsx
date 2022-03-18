@@ -11,7 +11,7 @@ import CustomLink from "../CustomLink";
 
 function MenuBar() {
   return (
-    <div className="min-h-screen bg-white md:w-[8%] lg:w-[6%] flex flex-col items-center justify-between py-8">
+    <div className="min-h-screen bg-white flex flex-col items-center justify-between py-8">
       <div className="">
         <img src={logo} alt="Logo" />
       </div>

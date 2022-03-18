@@ -7,7 +7,6 @@ import Home from "./pages/Home";
 import Statistic from "./pages/Statistic";
 
 function App() {
-  console.log("render APP");
   return (
     <div className="App">
       <MenuBar />

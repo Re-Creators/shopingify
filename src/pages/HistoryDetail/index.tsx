@@ -23,7 +23,7 @@ function HistoryDetail() {
 
   if (data === null) return <Spinner />;
   return (
-    <div className="p-10 md:w-[60%] lg:w-[69%] hide-scrollbar">
+    <div className="p-10 hide-scrollbar">
       <div className="flex flex-col">
         <Link
           to="/history"

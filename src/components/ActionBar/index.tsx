@@ -12,9 +12,8 @@ function ActionBar() {
     else if (actionState === ActionState.ADD_ITEM) return <AddItem />;
     return <ItemInfo />;
   };
-  console.log("render ActionBar");
   return (
-    <div className="md:w-[40%] lg:w-[25%] min-h-screen relative shadow-md">
+    <div className="min-h-screen relative shadow-md">
       <SwitchTransition mode="out-in">
         <CSSTransition
           key={actionState}

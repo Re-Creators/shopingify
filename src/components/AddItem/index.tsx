@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch } from "../../app/hooks";
 import axiosClient from "../../axiosClient";
 import { changeState } from "../../features/actionBarState/actionBarStateSlice";
@@ -7,18 +7,11 @@ import Category from "../../models/Category";
 import { ActionState } from "../../types/enum";
 import Spinner from "../Spinner";
 
-const categories: Category[] = [
-  { _id: "1", name: "Category 1" },
-  { _id: "2", name: "Category 2" },
-  { _id: "3", name: "Category 3" },
-  { _id: "4", name: "Category 4" },
-  { _id: "5", name: "Category 5" },
-];
-
 function AddItem() {
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [category, setCategory] = useState("");
+  const [categories, setCategories] = useState<Category[]>([]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,6 +28,15 @@ function AddItem() {
       console.error(err);
     }
   };
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const { data } = await axiosClient.get("/categories");
+      setCategories(data);
+    };
+
+    fetchCategories();
+  }, []);
   return (
     <div className="pt-8 px-5 bg-white h-full">
       <h1 className="text-2xl font-semibold">Add a new item</h1>

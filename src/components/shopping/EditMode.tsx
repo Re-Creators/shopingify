@@ -17,7 +17,7 @@ function EditMode({ dispatch }: Props) {
   );
 
   const validClassName = (valid: string, invalid: string): string => {
-    if (name === "" || cart.length === 0) return invalid;
+    if (name.trim() === "" || cart.length === 0) return invalid;
     return valid;
   };
 
@@ -72,7 +72,7 @@ function EditMode({ dispatch }: Props) {
               "bg-gray-400"
             )} right-0 top-0 px-5 rounded-md text-white`}
             type="submit"
-            disabled={name === "" || cart.length <= 0}
+            disabled={name.trim() === "" || cart.length <= 0}
             onClick={() => dispatch(saveShopping(name))}
           >
             Save

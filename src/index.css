@@ -12,8 +12,13 @@ body {
     @apply grid grid-cols-main md:grid-cols-main-md lg:grid-cols-main-lg h-screen;
     background-color: rgba(250, 250, 254, 1);
   }
+
+  .modal {
+    @apply fixed top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2;
+  }
 }
 
+/* Transition */
 .slide-enter {
   opacity: 0;
   transform: translateX(100%);
@@ -36,6 +41,22 @@ body {
   transition: all 300ms ease;
 }
 
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: all 300ms ease-in-out 0s;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: all 300ms ease-in-out 0s;
+}
+
+/* Custom Tooltip */
 .tooltip::before {
   position: absolute;
   content: "";

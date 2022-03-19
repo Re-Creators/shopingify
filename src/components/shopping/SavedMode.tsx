@@ -9,6 +9,9 @@ import {
 } from "../../features/shopping/shoppingSlice";
 import { ShoppingMode, ShoppingStatus } from "../../types/enum";
 import axiosClient from "../../axiosClient";
+import CancelModal from "../../modals/CancelModal";
+import { useState } from "react";
+import ModalContainer from "../../modals/ModalContainer";
 
 interface Props {
   dispatch: Dispatch;
@@ -18,6 +21,7 @@ function SavedMode({ dispatch }: Props) {
   const cart = useAppSelector((state) => state.shopping.cart);
   const name = useAppSelector((state) => state.shopping.name);
 
+  const [showModal, setShowModal] = useState(false);
   const markHandler = (id: string) => {
     dispatch(markComplete(id));
   };
@@ -88,10 +92,7 @@ function SavedMode({ dispatch }: Props) {
         </div>
       </div>
       <div className="absolute bottom-0 inset-x-0 bg-white py-5 px-10 flex items-center justify-center ">
-        <button
-          className="py-3  px-5"
-          onClick={() => submitShopping(ShoppingStatus.CANCELED)}
-        >
+        <button className="py-3  px-5" onClick={() => setShowModal(true)}>
           cancel
         </button>
         <button
@@ -101,6 +102,15 @@ function SavedMode({ dispatch }: Props) {
           Complete
         </button>
       </div>
+      <ModalContainer onClose={() => setShowModal(false)} isShow={showModal}>
+        <CancelModal
+          onClose={() => setShowModal(false)}
+          onSubmit={() => {
+            setShowModal(false);
+            submitShopping(ShoppingStatus.CANCELED);
+          }}
+        />
+      </ModalContainer>
     </>
   );
 }

@@ -1,8 +1,9 @@
 import { useEffect, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import SummaryChart from "../../components/statistic/SummaryChart";
 import TopItem from "../../components/statistic/TopItem";
 import { fetchStats } from "../../features/statistic/statisticSlice";
-import { topStats } from "../../helper/convertToStats";
+import { topStats, getChartData, ChartData } from "../../helper/convertToStats";
 
 const getPercentage = (value: number, total: number) =>
   Math.floor((value / total) * 100);
@@ -20,6 +21,7 @@ function Statistic() {
 
     return top;
   }, [list]);
+  const chartData = useMemo(() => getChartData(list), [list]);
 
   useEffect(() => {
     dispatch(fetchStats());
@@ -54,6 +56,10 @@ function Statistic() {
             ))}
           </div>
         </div>
+      </div>
+      <div className="mt-10">
+        <h1 className="text-xl font-semibold">Monthly Summary</h1>
+        <SummaryChart data={chartData} />
       </div>
     </div>
   );

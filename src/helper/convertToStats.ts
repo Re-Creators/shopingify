@@ -2,6 +2,7 @@ import Cart from "../models/Cart";
 import Category from "../models/Category";
 import { ShoppingListDetail } from "../models/ShoppingListDetail";
 import { ShoppingStatus } from "../types/enum";
+import moment from "moment";
 
 interface Stats {
   info: {
@@ -9,6 +10,11 @@ interface Stats {
     _id: string;
   };
   value: number;
+}
+
+export interface ChartData {
+  month: string;
+  items: number;
 }
 
 type TopResult = {
@@ -60,6 +66,36 @@ export const topStats = (list: ShoppingListDetail[]) => {
         });
       }
     });
+  });
+
+  return result;
+};
+
+export const getChartData = (list: ShoppingListDetail[]) => {
+  let result: ChartData[] = [];
+
+  const completeList = list.filter(
+    (item) => item.status === ShoppingStatus.COMPLETED
+  );
+
+  completeList.forEach((s: ShoppingListDetail) => {
+    const date = moment(s.createdAt);
+    const monthName = date.format("MMMM");
+
+    if (date.format("YYYY") === moment().format("YYYY")) {
+      s.items.forEach((item: Cart) => {
+        const monthExist = result.find((x) => x.month === monthName);
+
+        if (monthExist) {
+          monthExist.items += item.qty;
+        } else {
+          result.push({
+            month: monthName,
+            items: 0,
+          });
+        }
+      });
+    }
   });
 
   return result;

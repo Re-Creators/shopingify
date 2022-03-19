@@ -103,7 +103,8 @@ function AddItem() {
           <div className="flex mt-5 items-center justify-center">
             <button
               className="mr-5"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 dispatch(changeState(ActionState.SHOPPING_LIST));
               }}
             >

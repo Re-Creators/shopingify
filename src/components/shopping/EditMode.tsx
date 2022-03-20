@@ -1,5 +1,5 @@
 import { Dispatch } from "@reduxjs/toolkit";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAppSelector } from "../../app/hooks";
 import { saveShopping } from "../../features/shopping/shoppingSlice";
 import { groupedCart } from "../../helper/utils";

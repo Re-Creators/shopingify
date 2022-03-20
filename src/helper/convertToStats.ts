@@ -1,5 +1,4 @@
 import Cart from "../models/Cart";
-import Category from "../models/Category";
 import { ShoppingListDetail } from "../models/ShoppingListDetail";
 import { ShoppingStatus } from "../types/enum";
 import moment from "moment";

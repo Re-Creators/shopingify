@@ -19,7 +19,7 @@ function HistoryDetail() {
       setData(data);
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   if (data === null) return <Spinner classSize="w-10 h-10" />;
   return (

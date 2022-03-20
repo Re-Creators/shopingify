@@ -5,7 +5,6 @@ import {
   AiOutlineHistory,
 } from "react-icons/ai";
 import { GoGraph } from "react-icons/go";
-import { Link } from "react-router-dom";
 import Tooltip from "../Tooltip";
 import CustomLink from "../CustomLink";
 

@@ -1,9 +1,10 @@
 import { useEffect, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import Spinner from "../../components/Spinner";
 import SummaryChart from "../../components/statistic/SummaryChart";
 import TopItem from "../../components/statistic/TopItem";
 import { fetchStats } from "../../features/statistic/statisticSlice";
-import { topStats, getChartData, ChartData } from "../../helper/convertToStats";
+import { topStats, getChartData } from "../../helper/convertToStats";
 
 const getPercentage = (value: number, total: number) =>
   Math.floor((value / total) * 100);
@@ -27,6 +28,7 @@ function Statistic() {
     dispatch(fetchStats());
   }, [dispatch]);
 
+  if (loading) return <Spinner classSize="w-10 h-10" />;
   return (
     <div className="py-10 px-20">
       <div className="grid grid-cols-2 gap-10">

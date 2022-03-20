@@ -10,10 +10,6 @@ interface CategoryItemSlice {
   isLoading: boolean;
 }
 
-function startLoading(state: CategoryItemSlice) {
-  state.isLoading = false;
-}
-
 const initialState: CategoryItemSlice = {
   categoryItem: [],
   selectedItem: null,
@@ -24,7 +20,9 @@ export const categoryItemSlice = createSlice({
   name: "categoryItem",
   initialState,
   reducers: {
-    fetchCategoryStart: startLoading,
+    fetchCategoryStart: (state) => {
+      state.isLoading = true;
+    },
     fetchCategorySuccess: (
       state,
       { payload }: PayloadAction<CategoryItem[]>
@@ -51,5 +49,18 @@ export const fetchCategoryItems = (): AppThunk => async (dispatch) => {
     console.log(e);
   }
 };
+
+export const searchCategoryItems =
+  (name: string): AppThunk =>
+  async (dispatch) => {
+    dispatch(fetchCategoryStart());
+
+    try {
+      const { data } = await axiosClient.get("/items/search?name=" + name);
+      dispatch(fetchCategorySuccess(data));
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
 export default categoryItemSlice.reducer;

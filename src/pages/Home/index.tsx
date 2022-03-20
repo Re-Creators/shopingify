@@ -1,11 +1,27 @@
-import { useEffect } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
-import { useAppDispatch } from "../../app/hooks";
+import { useCallback, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import CategoryItems from "../../components/items/CategoryItems";
-import { fetchCategoryItems } from "../../features/categoryItem/categoryItemSlice";
+import SearchInput from "../../components/SearchInput";
+import Spinner from "../../components/Spinner";
+import {
+  fetchCategoryItems,
+  searchCategoryItems,
+} from "../../features/categoryItem/categoryItemSlice";
 
 function Home() {
   const dispatch = useAppDispatch();
+  const loading = useAppSelector((state) => state.categoryItem.isLoading);
+
+  const handleSearch = useCallback(
+    (name: string) => {
+      if (name.trim() === "") {
+        dispatch(fetchCategoryItems());
+      } else {
+        dispatch(searchCategoryItems(name));
+      }
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     dispatch(fetchCategoryItems());
@@ -20,17 +36,11 @@ function Home() {
             your shopping list wherever you go
           </h1>
         </div>
-        <div className="relative w-full lg:w-2/5 rounded-sm overflow-hidden  mt-3 lg:mt-0 shadow-md lg:shadow-none">
-          <input
-            type="text"
-            className="w-full outline-none pl-10 py-3 pr-2 bg-white shadow-md "
-            placeholder="search item"
-          />
-          <AiOutlineSearch className="absolute left-2 top-3" fontSize={24} />
-        </div>
+        <SearchInput doSearch={handleSearch} />
       </div>
+
       <div className="mt-14">
-        <CategoryItems />
+        {loading ? <Spinner classSize="w-10 h-10" /> : <CategoryItems />}
       </div>
     </div>
   );

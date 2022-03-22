@@ -8,7 +8,7 @@ body {
 }
 
 @layer components {
-  .App {
+  .main-container {
     @apply grid grid-cols-main md:grid-cols-main-md lg:grid-cols-main-lg h-screen;
     background-color: rgba(250, 250, 254, 1);
   }

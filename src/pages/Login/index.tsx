@@ -4,13 +4,13 @@ import logo from "../../assets/images/shoppingify-logo.svg";
 function Login() {
   return (
     <div>
-      <div className="px-10 py-5">
-        <div>
-          <img src={logo} alt="" />
+      <div className="px-3 md:px-10 py-2 md:py-5">
+        <div className="w-36 md:w-auto">
+          <img src={logo} alt="" className="w-full md:w-auto" />
         </div>
       </div>
       <div className="flex justify-center">
-        <div className="mt-24 w-1/4">
+        <div className="mt-24 md:w-1/2 lg:w-2/5 xl:w-1/4">
           <h1 className="text-center text-xl font-semibold">
             Login into your account
           </h1>

@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import AuthLayout from "./components/layouts/AuthLayout";
 import MainLayout from "./components/layouts/MainLayout";
 import History from "./pages/History";
 import HistoryDetail from "./pages/HistoryDetail";
@@ -11,8 +12,6 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="/history">
@@ -21,6 +20,22 @@ function App() {
           </Route>
           <Route path="/statistic" element={<Statistic />} />
         </Route>
+        <Route
+          path="/login"
+          element={
+            <AuthLayout>
+              <Login />
+            </AuthLayout>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <AuthLayout>
+              <Register />
+            </AuthLayout>
+          }
+        />
       </Routes>
     </div>
   );

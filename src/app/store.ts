@@ -14,6 +14,7 @@ import {
 const persistConfig = {
   key: "root",
   storage,
+  transforms: [],
   whitelist: ["shopping"],
 };
 

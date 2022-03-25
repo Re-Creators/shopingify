@@ -1,7 +1,28 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import logo from "../../assets/images/shoppingify-logo.svg";
+import Spinner from "../../components/Spinner";
+import { login } from "../../features/user/userSlice";
 
 function Login() {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const loading = useAppSelector((state) => state.user.isLoading);
+  const user = useAppSelector((state) => state.user.info);
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
+
+  const onSubmitHandler = () => {
+    dispatch(login({ username, password }));
+  };
+
   return (
     <div>
       <div className="px-3 md:px-10 py-2 md:py-5">
@@ -20,7 +41,9 @@ function Login() {
               <input
                 type="text"
                 id="username"
+                onChange={(e) => setUsername(e.target.value)}
                 className="outline-none border border-gray-600 px-3 py-2 mt-2"
+                required
               />
             </div>
             <div className="flex flex-col mt-5">
@@ -29,11 +52,17 @@ function Login() {
                 type="password"
                 id="password"
                 className="outline-none border border-gray-600 px-3 py-2 mt-2"
+                onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
             <div className="mt-5">
-              <button className="w-full py-3 text-center bg-blue-600 text-white rounded-sm">
-                Login
+              <button
+                className="w-full py-3 text-center bg-blue-600 text-white rounded-sm"
+                onClick={onSubmitHandler}
+                disabled={loading}
+              >
+                {loading ? <Spinner /> : "Login"}
               </button>
             </div>
             <div className="mt-5">

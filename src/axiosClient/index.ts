@@ -9,8 +9,7 @@ const instance = axios.create({
 
 const onRequest = (config: AxiosRequestConfig): AxiosRequestConfig => {
   if (config.headers) {
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjMxNjgyZGVhYTI1MjNiNzg2YTg3YmUiLCJpYXQiOjE2NDc0MDUxMDF9.iLAo9PGGsl3LPuj8enTkxHZouWblQAa0xf8QZALMFHw";
+    const token = localStorage.getItem("shopingify_token");
     if (token) {
       config.headers.authorization = `Bearer ${token}`;
       return config;

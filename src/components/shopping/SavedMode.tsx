@@ -9,9 +9,9 @@ import {
 } from "../../features/shopping/shoppingSlice";
 import { ShoppingMode, ShoppingStatus } from "../../types/enum";
 import axiosClient from "../../axiosClient";
-import CancelModal from "../../modals/CancelModal";
+import CancelModal from "../modals/CancelModal";
 import { useState } from "react";
-import ModalContainer from "../../modals/ModalContainer";
+import ModalContainer from "../modals/ModalContainer";
 
 interface Props {
   dispatch: Dispatch;

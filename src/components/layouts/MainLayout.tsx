@@ -8,17 +8,7 @@ import MenuBar from "../MenuBar";
 import Spinner from "../Spinner";
 
 function MainLayout() {
-  const dispatch = useDispatch();
   const loading = useAppSelector((state) => state.user.isLoading);
-  const user = useAppSelector((state) => state.user.info);
-
-  useEffect(() => {
-    if (localStorage.getItem("shopingify_token")) {
-      dispatch(getUser());
-    } else {
-      dispatch(logout());
-    }
-  }, [dispatch]);
 
   if (loading)
     return (
@@ -26,6 +16,7 @@ function MainLayout() {
         <Spinner classSize="w-10 h-10" />
       </div>
     );
+
   return (
     <div className="main-container">
       <MenuBar />

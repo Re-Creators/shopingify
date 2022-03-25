@@ -8,7 +8,7 @@ interface Props {
 
 function AuthLayout({ children }: Props) {
   const user = useAppSelector((state) => state.user.info);
-  console.log(user);
+
   if (user) return <Navigate to="/" />;
   return children;
 }

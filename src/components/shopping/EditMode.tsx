@@ -54,7 +54,7 @@ function EditMode({ dispatch }: Props) {
           </div>
         )}
       </div>
-      <div className="absolute bottom-0 inset-x-0 bg-white py-5 px-10 ">
+      <div className="absolute bottom-0 inset-x-0 bg-white py-5 px-5 md:px-10 ">
         <div className="w-full relative overflow-hidden">
           <input
             type="text"

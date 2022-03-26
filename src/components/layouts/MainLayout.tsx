@@ -19,7 +19,7 @@ function MainLayout() {
     );
 
   return (
-    <div className="main-container">
+    <div className="main-container relative">
       <MenuBar />
       <Outlet />
       <ActionBar />

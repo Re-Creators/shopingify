@@ -19,6 +19,10 @@ body {
     background-color: rgba(250, 250, 254, 1);
   }
 
+  .action-bar {
+    @apply absolute top-0 left-[15%] right-0 md:block h-screen md:static md:shadow-md;
+  }
+
   .modal {
     @apply fixed top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2;
   }

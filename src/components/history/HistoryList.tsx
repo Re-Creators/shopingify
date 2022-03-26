@@ -1,27 +1,14 @@
 import { useEffect, useState } from "react";
 import ShoppingHistory from "../../models/ShoppingHistory";
 import History from "./History";
-import axiosClient from "../../axiosClient";
 import Spinner from "../Spinner";
 import { groupedHistory } from "../../helper/utils";
 
-function HistoryList() {
-  const [histories, setHistories] = useState<ShoppingHistory[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+interface Props {
+  histories: ShoppingHistory[];
+}
 
-  useEffect(() => {
-    const fetchHistories = async () => {
-      setIsLoading(true);
-      const { data } = await axiosClient.get("/shopping/history");
-      setIsLoading(false);
-      setHistories(data);
-    };
-
-    fetchHistories();
-  }, []);
-
-  if (isLoading) return <Spinner classSize="w-10 h-10" />;
-
+function HistoryList({ histories }: Props) {
   return (
     <div>
       {histories.length === 0 && (

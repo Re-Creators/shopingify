@@ -1,4 +1,5 @@
 export enum ActionState {
+  HIDDEN,
   ADD_ITEM,
   SHOPPING_LIST,
   ITEM_INFO,
@@ -16,5 +17,6 @@ export enum ShoppingMode {
 
 export enum ShoppingStatus {
   COMPLETED = 0,
+
   CANCELED = 1,
 }

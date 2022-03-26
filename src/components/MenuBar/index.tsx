@@ -12,7 +12,7 @@ import { useAppSelector } from "../../app/hooks";
 function MenuBar() {
   const cart = useAppSelector((state) => state.shopping.cart);
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-between py-8">
+    <div className="min-h-full bg-white flex flex-col items-center justify-between py-16">
       <div className="">
         <img src={logo} alt="Logo" />
       </div>

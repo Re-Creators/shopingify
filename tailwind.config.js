@@ -4,7 +4,7 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         // Simple 16 column grid
-        main: "20% 1fr",
+        main: "15% 1fr",
         "main-md": "8% 1fr 40%",
         "main-lg": "6% 1fr 25%",
       },

@@ -13,7 +13,7 @@ function ActionBar() {
     return <ItemInfo />;
   };
   return (
-    <div className="min-h-screen relative shadow-md">
+    <div className="hidden md:block min-h-screen relative shadow-md">
       <SwitchTransition mode="out-in">
         <CSSTransition
           key={actionState}

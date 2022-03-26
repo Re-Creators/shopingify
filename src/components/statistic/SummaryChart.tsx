@@ -16,7 +16,7 @@ interface Props {
 
 function SummaryChart({ data }: Props) {
   return (
-    <div className="w-full h-96 mt-5">
+    <div className="w-full h-[300px] md:h-96 mt-5">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width={500}

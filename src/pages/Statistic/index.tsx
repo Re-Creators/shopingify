@@ -31,10 +31,10 @@ function Statistic() {
 
   if (loading) return <Spinner classSize="w-10 h-10" />;
   return (
-    <div className="py-10 px-20 hide-scrollbar">
+    <div className="p-5 pb-16 md:py-10 md:px-20 hide-scrollbar">
       {stats.items.length > 0 ? (
         <>
-          <div className="grid grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-2 gap-10">
             <div>
               <h1 className="text-xl font-semibold">Top Items</h1>
               <div className="mt-5 text-sm">

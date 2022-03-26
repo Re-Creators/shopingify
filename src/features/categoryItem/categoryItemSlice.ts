@@ -27,7 +27,9 @@ export const categoryItemSlice = createSlice({
       state,
       { payload }: PayloadAction<CategoryItem[]>
     ) => {
-      state.categoryItem = payload;
+      state.categoryItem = payload.filter(
+        (category) => category.items.length > 0
+      );
       state.isLoading = false;
     },
     setSelectedItem: (state, { payload }: PayloadAction<Item>) => {

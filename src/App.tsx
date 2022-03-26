@@ -17,8 +17,6 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem("shopingify_token")) {
       dispatch(getUser());
-    } else {
-      dispatch(logout());
     }
   }, [dispatch]);
 

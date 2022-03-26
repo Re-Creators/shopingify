@@ -41,10 +41,7 @@ export const userSlice = createSlice({
     },
     logout: (state) => {
       localStorage.clear();
-      window.location.href =
-        process.env.NODE_ENV === "development"
-          ? "http://:localhost:8080/login"
-          : "https://kataku-io.netlify.app/login";
+      window.location.href = `${window.location.origin}/login`;
     },
   },
 });

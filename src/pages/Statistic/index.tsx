@@ -69,7 +69,7 @@ function Statistic() {
         </>
       ) : (
         <div className="flex flex-col items-center mt-10">
-          <img src={noDataImage} className="w-[300px]" />
+          <img src={noDataImage} className="w-[300px]" alt="no data" />
           <div className="font-semibold text-xl mt-5 text-center">
             No data available
           </div>

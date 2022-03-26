@@ -11,12 +11,6 @@ interface State {
   error: string | null;
 }
 
-type ResponseData = {
-  token: string;
-  error: string | null;
-  user: User;
-};
-
 type UserData = {
   username: string;
   password: string;

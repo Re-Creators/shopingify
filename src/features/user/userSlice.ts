@@ -4,17 +4,22 @@ import { AppThunk } from "../../app/store";
 import axiosClient from "../../axiosClient/index";
 import User from "../../models/User";
 
-interface State {
-  isLoading: boolean;
-  token: string | null;
-  info: User | null;
-  error: string | null;
-}
-
 type UserData = {
   username: string;
   password: string;
 };
+
+type UserError = {
+  type: string;
+  message: string;
+};
+
+interface State {
+  isLoading: boolean;
+  token: string | null;
+  info: User | null;
+  error: UserError | null;
+}
 
 const initialState: State = {
   isLoading: false,
@@ -35,7 +40,7 @@ export const userSlice = createSlice({
       state.error = null;
       state.info = payload;
     },
-    fetchFailure: (state, { payload }: PayloadAction<string>) => {
+    fetchFailure: (state, { payload }: PayloadAction<UserError>) => {
       state.isLoading = false;
       state.error = payload;
     },
@@ -43,10 +48,13 @@ export const userSlice = createSlice({
       localStorage.clear();
       window.location.href = `${window.location.origin}/login`;
     },
+    clearError: (state) => {
+      state.error = null;
+    },
   },
 });
 
-export const { logout } = userSlice.actions;
+export const { logout, clearError } = userSlice.actions;
 const { fetchStart, fetchSuccess, fetchFailure } = userSlice.actions;
 
 export const register =
@@ -65,9 +73,8 @@ export const register =
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        dispatch(fetchFailure(error.response?.data.message));
+        dispatch(fetchFailure(error.response?.data));
       }
-      console.log(error);
     }
   };
 
@@ -85,9 +92,8 @@ export const login =
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        dispatch(fetchFailure(error.response?.data.message));
+        dispatch(fetchFailure(error.response?.data));
       }
-      console.log(error);
     }
   };
 
@@ -99,7 +105,6 @@ export const getUser = (): AppThunk => async (dispatch: any) => {
     dispatch(fetchSuccess(data.user));
   } catch (e) {
     dispatch(logout());
-    console.log(e);
   }
 };
 

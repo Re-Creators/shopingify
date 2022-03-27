@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import logo from "../../assets/images/shoppingify-logo.svg";
 import Spinner from "../../components/Spinner";
-import { login } from "../../features/user/userSlice";
+import { clearError, login } from "../../features/user/userSlice";
 
 function Login() {
   const dispatch = useAppDispatch();
@@ -12,12 +12,20 @@ function Login() {
   const [password, setPassword] = useState("");
   const loading = useAppSelector((state) => state.user.isLoading);
   const user = useAppSelector((state) => state.user.info);
+  const error = useAppSelector((state) => state.user.error);
 
   useEffect(() => {
     if (user) {
       navigate("/");
     }
   }, [navigate, user]);
+
+  useEffect(
+    () => () => {
+      dispatch(clearError());
+    },
+    [dispatch]
+  );
 
   const onSubmitHandler = () => {
     dispatch(login({ username, password }));
@@ -45,6 +53,11 @@ function Login() {
                 className="outline-none border border-gray-600 px-3 py-2 mt-2"
                 required
               />
+              {error?.type === "username" && (
+                <p className="text-red-500 text-sm italic mt-1">
+                  {error.message}
+                </p>
+              )}
             </div>
             <div className="flex flex-col mt-5">
               <label htmlFor="password">Password</label>
@@ -55,6 +68,11 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              {error?.type === "password" && (
+                <p className="text-red-500 text-sm italic mt-1">
+                  {error.message}
+                </p>
+              )}
             </div>
             <div className="mt-5">
               <button

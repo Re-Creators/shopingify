@@ -11,16 +11,17 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import checkScreen from "../../helper/checkScreen";
 import { changeState } from "../../features/actionBarState/actionBarStateSlice";
 import { ActionState } from "../../types/enum";
-
-const isMobile = checkScreen();
+import { useState } from "react";
+import { logout } from "../../features/user/userSlice";
 
 function MenuBar() {
   const cart = useAppSelector((state) => state.shopping.cart);
   const dispatch = useAppDispatch();
   const actionState = useAppSelector((state) => state.actionBarState.value);
+  const [showLogout, setShowLogout] = useState(false);
 
   const toggleActionBar = () => {
-    if (isMobile) {
+    if (checkScreen()) {
       const state =
         actionState === ActionState.HIDDEN
           ? ActionState.SHOPPING_LIST
@@ -30,8 +31,21 @@ function MenuBar() {
   };
   return (
     <div className="bg-white flex flex-col items-center justify-between h-full">
-      <div className="mt-5">
-        <img src={logo} alt="Logo" />
+      <div className="mt-5 relative">
+        <div
+          className="cursor-pointer"
+          onClick={() => setShowLogout(!showLogout)}
+        >
+          <img src={logo} alt="Logo" />
+        </div>
+        {showLogout && (
+          <div
+            className="ml-3 absolute z-50 bg-white shadow-md px-3 py-2 rounded-md"
+            onClick={() => dispatch(logout())}
+          >
+            <button>Logout</button>
+          </div>
+        )}
       </div>
       <div className="w-full">
         <ul className="flex flex-col">

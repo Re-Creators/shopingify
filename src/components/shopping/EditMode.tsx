@@ -23,9 +23,9 @@ function EditMode({ dispatch }: Props) {
 
   return (
     <>
-      <div className="mt-10 h-full">
+      <div className="mt-10 md:h-full">
         {cart.length > 0 ? (
-          <div className="h-full">
+          <div className="md:h-full">
             <div className="flex justify-between">
               <h2 className="font-semibold text-xl">Shopping list</h2>
             </div>
@@ -46,7 +46,7 @@ function EditMode({ dispatch }: Props) {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col items-center h-full">
+          <div className="flex flex-col items-center md:h-full">
             <div className="font-semibold flex-1">No Items</div>
             <div className="flex-1 mb-72  ">
               <img src={shoppingImage} alt="Shopping" />
@@ -54,11 +54,11 @@ function EditMode({ dispatch }: Props) {
           </div>
         )}
       </div>
-      <div className="absolute bottom-0 inset-x-0 bg-white py-5 px-5 md:px-10 ">
+      <div className="absolute bottom-0 inset-x-0 bg-white py-5 px-5 md:px-10 z-10">
         <div className="w-full relative overflow-hidden">
           <input
             type="text"
-            className={`w-full py-4  ${validClassName(
+            className={`w-full py-2 md:py-4  ${validClassName(
               "border-yellow-500",
               "border-gray-400"
             )}  border-2 outline-none rounded-md pl-3 pr-20`}

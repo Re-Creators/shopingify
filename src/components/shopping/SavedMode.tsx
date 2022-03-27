@@ -81,7 +81,7 @@ function SavedMode({ dispatch }: Props) {
                     >
                       {item.name}
                     </div>
-                    <div className="border-yellow-500 rounded-full border-2 px-3 py-1 text-yellow-500">
+                    <div className="border-yellow-500 rounded-full border-2 px-2 md:px-3 py-1 text-yellow-500">
                       {item.qty} pcs
                     </div>
                   </li>

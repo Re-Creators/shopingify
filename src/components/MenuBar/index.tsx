@@ -29,7 +29,7 @@ function MenuBar() {
     }
   };
   return (
-    <div className="h-screen bg-white flex flex-col items-center justify-between py-16">
+    <div className="bg-white flex flex-col items-center justify-between h-full">
       <div className="">
         <img src={logo} alt="Logo" />
       </div>
@@ -58,13 +58,15 @@ function MenuBar() {
           </li>
         </ul>
       </div>
-      <div
-        className="md:w-10 md:h-10 lg:w-14 lg:h-14 bg-yellow-600 p-2 rounded-full flex items-center justify-center relative text-white"
-        onClick={toggleActionBar}
-      >
-        <AiOutlineShoppingCart fontSize={24} />
-        <div className="md:text-xs lg:text-base px-2 bg-red-500 absolute rounded-md -top-1 -right-1">
-          {cart.reduce((acc, item) => acc + item.qty, 0)}
+      <div className="h-10 w-10">
+        <div
+          className="md:w-10 md:h-10 lg:w-14 lg:h-14 bg-yellow-600 p-2 rounded-full flex items-center justify-center text-white absolute z-10 bottom-10"
+          onClick={toggleActionBar}
+        >
+          <AiOutlineShoppingCart fontSize={24} />
+          <div className="md:text-xs lg:text-base px-2 bg-red-500 absolute rounded-md -top-1 -right-1">
+            {cart.reduce((acc, item) => acc + item.qty, 0)}
+          </div>
         </div>
       </div>
     </div>

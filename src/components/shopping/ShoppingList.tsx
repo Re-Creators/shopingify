@@ -11,7 +11,7 @@ function ShoppingList() {
 
   return (
     <div className="action-bar">
-      <div className="bg-orange-200 pt-10 px-5 h-full relative">
+      <div className="bg-orange-200 pt-10 px-5 h-full md:relative">
         <div className="flex bg-pink-900 w-full p-4 rounded-md">
           <div className="w-32 relative">
             <img

@@ -30,7 +30,7 @@ function MenuBar() {
   };
   return (
     <div className="bg-white flex flex-col items-center justify-between h-full">
-      <div className="">
+      <div className="mt-5">
         <img src={logo} alt="Logo" />
       </div>
       <div className="w-full">

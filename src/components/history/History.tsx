@@ -18,7 +18,9 @@ const statusColor = (status: number) =>
 function History({ name, createdAt, status, id }: Props) {
   return (
     <div className="flex bg-white px-3 py-4 justify-between items-center  shadow-md mt-3 rounded-md h-full">
-      <div className="font-semibold">{name}</div>
+      <Link to={`/history/${id}`} className="font-semibold">
+        {name}
+      </Link>
       <div className="grid md:grid-cols-[120px_120px_30px] gap-5 items-center">
         <div className="hidden md:flex items-center text-gray-400">
           <MdOutlineDateRange fontSize={20} />

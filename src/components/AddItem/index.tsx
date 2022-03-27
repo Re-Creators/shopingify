@@ -39,10 +39,10 @@ function AddItem() {
   }, []);
   return (
     <div className="action-bar">
-      <div className="pt-8 px-5 bg-white h-full">
+      <div className="py-8 px-5 bg-white h-full hide-scrollbar">
         <h1 className="text-2xl font-semibold">Add a new item</h1>
-        <div>
-          <form onSubmit={handleSubmit}>
+        <div className="">
+          <form onSubmit={handleSubmit} className="flex flex-col">
             <div className="flex flex-col mt-5">
               <label htmlFor="" className="font-semibold">
                 Name

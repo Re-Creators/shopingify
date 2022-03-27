@@ -14,7 +14,7 @@ body {
   }
 
   .action-bar {
-    @apply absolute top-0 left-[15%] right-0 md:block h-full md:static md:shadow-md;
+    @apply absolute inset-y-0 z-30 left-[15%] right-0 md:block md:h-full md:static md:shadow;
   }
 
   .modal {

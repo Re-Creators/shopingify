@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { useAppDispatch } from "./app/hooks";
 import AuthLayout from "./components/layouts/AuthLayout";
 import MainLayout from "./components/layouts/MainLayout";
-import { getUser, logout } from "./features/user/userSlice";
+import { getUser } from "./features/user/userSlice";
 import History from "./pages/History";
 import HistoryDetail from "./pages/HistoryDetail";
 import Home from "./pages/Home";

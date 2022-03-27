@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import ShoppingHistory from "../../models/ShoppingHistory";
 import History from "./History";
-import Spinner from "../Spinner";
 import { groupedHistory } from "../../helper/utils";
 
 interface Props {
